@@ -11,8 +11,6 @@ runs:
     using: "composite"
     steps:
       - name: Run Flow
-        env:
-          CUMULUSCI_SERVICE_github: '{"username": "${{ vars.GH_USER }}", "token": "${{ secrets.GH_TOKEN }}", "email": "cci@github.actions" }'
         run: |
           cci flow run ${{ inputs.flow-name }} --org ${{ inputs.org-name }} | tee cumulusci-flow.log
         shell: bash
