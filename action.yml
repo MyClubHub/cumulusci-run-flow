@@ -7,10 +7,18 @@ inputs:
   flow-name:
     description: 'Name of the Cumulus flow to execute'
     required: true
+  delete-scratch-org:
+    description: 'Specify whether to delete the Scratch org'
+    required: false
+    default: true
 runs:
     using: "composite"
     steps:
       - name: Run Flow
         run: |
-          cci flow run ${{ inputs.flow-name }} --org ${{ inputs.org-name }} | tee cumulusci-flow.log
+          if [ "${{ inputs.delete-scratch-org }}" = "true" ]; then
+            cci flow run ${{ inputs.flow-name }} --org ${{ inputs.org-name }} | tee cumulusci-flow.log
+          else
+            cci flow run spin_up_test --org ${{ inputs.org-name }} | tee cumulusci-flow.log
+          fi
         shell: bash
