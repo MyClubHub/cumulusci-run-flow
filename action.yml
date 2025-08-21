@@ -15,7 +15,7 @@ runs:
     using: "composite"
     steps:
       - name: Add IP range to System Admin Profile
-        if: ${{ (inputs.delete-scratch-org == 'false' }}
+        if: ${{ (inputs.delete-scratch-org == 'false' ) }}
         run: |
           mkdir -p profiles
           cat <<EOF > profiles/Admin.profile-meta.xml
