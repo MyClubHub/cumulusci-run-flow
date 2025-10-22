@@ -7,6 +7,7 @@ inputs:
   flow-name:
     description: 'Name of the Cumulus flow to execute'
     required: true
+    default: 'ci_feature_2gp'
   delete-scratch-org:
     description: 'Specify whether to delete the Scratch org'
     required: false
