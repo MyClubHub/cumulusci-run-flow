@@ -40,3 +40,7 @@ runs:
             cci flow run spin_up_test --org ${{ inputs.org-name }} | tee cumulusci-flow.log
           fi
         shell: bash
+      - name: Print Scratch Org Information
+        run: |
+          cci org info '${{ inputs.org-name }}'
+        shell: bash
