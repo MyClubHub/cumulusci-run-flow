@@ -34,6 +34,7 @@ runs:
       - name: Run Flow
         run: |
           if [ "${{ inputs.delete-scratch-org }}" = "true" ]; then
+            cci org info '${{ inputs.org-name }}'
             cci flow run ${{ inputs.flow-name }} --org ${{ inputs.org-name }} | tee cumulusci-flow.log
           else
             cci org info '${{ inputs.org-name }}'
